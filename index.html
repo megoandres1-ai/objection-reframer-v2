@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Objection Reframer — Café is for Closers</title>
+<meta name="description" content="Paste any sales objection. Get the real fear behind it and 4 ready-to-use reframe scripts — free tool by Café is for Closers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0C0C0F;
+    --surface: #131318;
+    --surface2: #1A1A22;
+    --border: #25252F;
+    --border2: #2E2E3A;
+    --text: #EEEEF2;
+    --text2: #9090A0;
+    --text3: #55556A;
+    --accent: #C8A96E;
+    --accent2: #8B6F3E;
+    --rackham: #5B8DEF;
+    --hormozi: #E8644A;
+    --miner: #4DB896;
+    --mego: #B87FE8;
+    --fear: #E8A93A;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 6vw, 46px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .header p {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border2), transparent);
+    margin: 36px 0;
+  }
+
+  /* Input */
+  .input-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+  }
+  .input-wrap:focus-within { border-color: var(--border2); }
+  .input-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text3);
+    display: block;
+    margin-bottom: 12px;
+  }
+  textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+    min-height: 80px;
+  }
+  textarea::placeholder { color: var(--text3); font-style: italic; }
+
+  .input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .hint { font-size: 11px; color: var(--text3); }
+  .hint kbd {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 10px;
+    font-family: monospace;
+  }
+
+  .run-btn {
+    background: var(--accent);
+    color: #0C0C0F;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.3px;
+  }
+  .run-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+  .run-btn:disabled { opacity: 0.3; cursor: default; transform: none; }
+
+  .loading-dots { display: none; align-items: center; gap: 6px; padding: 8px 0; }
+  .loading-dots.visible { display: flex; }
+  .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 1.2s ease-in-out infinite; }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+  .loading-dots span { font-size: 13px; color: var(--text3); margin-left: 4px; }
+
+  .error-msg { color: #E87070; font-size: 13px; margin-top: 10px; padding-left: 4px; }
+
+  /* Results */
+  #results { display: none; flex-direction: column; gap: 12px; margin-top: 24px; }
+  #results.visible { display: flex; }
+
+  .fear-card {
+    background: linear-gradient(135deg, #1A1508, #16120A);
+    border: 1px solid #3A2E10;
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    animation: fadeUp 0.4s ease both;
+  }
+  .card-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .fear-card .card-label { color: var(--fear); }
+  .fear-card .fear-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .fw-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    animation: fadeUp 0.4s ease both;
+  }
+  .fw-card:nth-child(2) { animation-delay: 0.05s; }
+  .fw-card:nth-child(3) { animation-delay: 0.1s; }
+  .fw-card:nth-child(4) { animation-delay: 0.15s; }
+  .fw-card:nth-child(5) { animation-delay: 0.2s; }
+
+  .fw-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .fw-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+  .fw-sub { font-size: 11px; color: var(--text3); font-weight: 400; }
+  .fw-rackham .fw-name { color: var(--rackham); }
+  .fw-hormozi .fw-name { color: var(--hormozi); }
+  .fw-miner .fw-name { color: var(--miner); }
+  .fw-mego { border-color: #2E1F42; background: linear-gradient(135deg, #16101F, #120E1A); }
+  .fw-mego .fw-name { color: var(--mego); }
+  .fw-mego .fw-sub { color: #6B4D90; }
+
+  .copy-btn {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    color: var(--text3);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .copy-btn:hover { color: var(--text); }
+  .copy-btn.copied { color: var(--miner); border-color: var(--miner); }
+
+  .fw-text { font-size: 14px; color: var(--text2); line-height: 1.8; }
+  .fw-mego .fw-text { color: #9B7DC0; }
+
+  .analogy-card {
+    background: linear-gradient(135deg, #0E1520, #0C1219);
+    border: 1px solid #1A2E40;
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    animation: fadeUp 0.4s ease 0.25s both;
+  }
+  .analogy-card .card-label { color: #5BA4D4; }
+  .analogy-card .analogy-text {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.75;
+  }
+
+  /* Gate — email capture */
+  .gate {
+    background: linear-gradient(135deg, #13101E, #0F1320);
+    border: 1px solid #2E1F42;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .gate h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .gate p { font-size: 13.5px; color: var(--text2); line-height: 1.7; margin-bottom: 20px; }
+  .gate-row { display: flex; gap: 8px; max-width: 400px; margin: 0 auto; }
+  .gate-input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    padding: 11px 14px;
+    outline: none;
+  }
+  .gate-input:focus { border-color: var(--mego); }
+  .gate-input::placeholder { color: var(--text3); }
+  .gate-btn {
+    background: var(--mego);
+    color: #0C0C0F;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 18px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+  .gate-btn:hover { opacity: 0.85; }
+  .gate-note { font-size: 11px; color: var(--text3); margin-top: 10px; }
+
+  /* CTA */
+  .cta-card {
+    display: none;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    padding: 24px;
+    animation: fadeUp 0.4s ease both;
+    margin-top: 4px;
+  }
+  .cta-card.visible { display: block; }
+  .cta-card p { font-size: 13.5px; color: var(--text2); line-height: 1.75; margin-bottom: 16px; }
+  .cta-link {
+    display: inline-block;
+    background: var(--accent);
+    color: #0C0C0F;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 11px 22px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .cta-link:hover { opacity: 0.85; }
+
+  .footer { text-align: center; margin-top: 56px; }
+  .footer p { font-size: 11px; color: var(--text3); letter-spacing: 1px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 480px) {
+    .gate-row { flex-direction: column; }
+    .input-footer { flex-direction: column; gap: 12px; align-items: flex-start; }
+    .run-btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <span class="eyebrow">☕ Café is for Closers</span>
+    <h1>Sales Objection<br><em>Reframer</em></h1>
+    <p>Paste any objection word-for-word. Get the real fear beneath it — and 4 ready-to-use scripts.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="input-wrap">
+    <label class="input-label" for="objection">Prospect's objection</label>
+    <textarea id="objection" placeholder='"I need to think about it…"' rows="3"></textarea>
+    <div class="input-footer">
+      <span class="hint">Press <kbd>⌘</kbd> <kbd>↵</kbd> to run</span>
+      <button class="run-btn" id="runBtn" onclick="analyze()">Reframe it →</button>
+    </div>
+  </div>
+
+  <div class="loading-dots" id="loadingDots">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <span>Analyzing objection…</span>
+  </div>
+  <p class="error-msg" id="errMsg"></p>
+
+  <div id="results">
+    <div class="fear-card">
+      <div class="card-label">⬡ Real fear underneath</div>
+      <p class="fear-text" id="fearText"></p>
+    </div>
+
+    <div class="fw-card fw-rackham">
+      <div class="fw-header">
+        <div><div class="fw-name">Neil Rackham</div><div class="fw-sub">SPIN Selling</div></div>
+        <button class="copy-btn" id="copyRackham" onclick="copyText('rackham','copyRackham')">Copy</button>
+      </div>
+      <p class="fw-text" id="rackhamText"></p>
+    </div>
+
+    <div class="fw-card fw-hormozi">
+      <div class="fw-header">
+        <div><div class="fw-name">Alex Hormozi</div><div class="fw-sub">ROI Math</div></div>
+        <button class="copy-btn" id="copyHormozi" onclick="copyText('hormozi','copyHormozi')">Copy</button>
+      </div>
+      <p class="fw-text" id="hormoziText"></p>
+    </div>
+
+    <div class="fw-card fw-miner">
+      <div class="fw-header">
+        <div><div class="fw-name">Jeremy Miner</div><div class="fw-sub">NEPQ</div></div>
+        <button class="copy-btn" id="copyMiner" onclick="copyText('miner','copyMiner')">Copy</button>
+      </div>
+      <p class="fw-text" id="minerText"></p>
+    </div>
+
+    <div class="fw-card fw-mego">
+      <div class="fw-header">
+        <div><div class="fw-name">Andres Mego</div><div class="fw-sub">EQ Style — 5-Step Reframe</div></div>
+        <button class="copy-btn" id="copyMego" onclick="copyText('mego','copyMego')">Copy</button>
+      </div>
+      <p class="fw-text" id="megoText"></p>
+    </div>
+
+    <div class="analogy-card">
+      <div class="card-label">◈ Power analogy</div>
+      <p class="analogy-text" id="analogyText"></p>
+    </div>
+
+    <!-- Email gate — shows after first use -->
+    <div class="gate" id="gate" style="display:none">
+      <h2>Want more scripts like these?</h2>
+      <p>Drop your email and get access to unlimited reframes — plus our free closer's playbook.</p>
+      <div class="gate-row">
+        <input class="gate-input" type="email" id="gateEmail" placeholder="your@email.com" />
+        <button class="gate-btn" onclick="submitGate()">Get Access →</button>
+      </div>
+      <p class="gate-note">No spam. Unsubscribe anytime.</p>
+    </div>
+
+    <div class="cta-card" id="ctaCard">
+      <p><strong style="color: var(--text);">Want to actually use these on calls?</strong> Learn how and when to deploy these reframes for your specific offer — and practice with real scripts that close.</p>
+      <a class="cta-link" href="https://calendly.com/lindseyplacek/30min" target="_blank" rel="noopener noreferrer">Book a free call →</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>SPIN · ROI MATH · NEPQ · EQ STYLE · Powered by Claude</p>
+  </div>
+</div>
+
+<script>
+let useCount = 0;
+let gateSubmitted = false;
+
+const textarea = document.getElementById('objection');
+textarea.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) analyze(); });
+
+async function analyze() {
+  const objection = textarea.value.trim();
+  if (!objection) return;
+
+  // After first free use, show gate before continuing
+  if (useCount >= 1 && !gateSubmitted) {
+    document.getElementById('gate').style.display = 'block';
+    document.getElementById('gate').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const runBtn = document.getElementById('runBtn');
+  runBtn.disabled = true;
+  document.getElementById('loadingDots').classList.add('visible');
+  document.getElementById('errMsg').textContent = '';
+  document.getElementById('results').classList.remove('visible');
+
+  try {
+    const res = await fetch('/api/reframe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ objection })
+    });
+
+    const parsed = await res.json();
+    if (!res.ok) throw new Error(parsed.error || 'API error');
+
+    document.getElementById('fearText').textContent = '\u201C' + parsed.fear + '\u201D';
+    document.getElementById('rackhamText').textContent = parsed.rackham;
+    document.getElementById('hormoziText').textContent = parsed.hormozi;
+    document.getElementById('minerText').textContent = parsed.miner;
+    document.getElementById('megoText').textContent = parsed.mego;
+    document.getElementById('analogyText').textContent = parsed.analogy;
+
+    window._result = parsed;
+    document.getElementById('results').classList.add('visible');
+
+    useCount++;
+
+    // Show CTA after 2nd use
+    if (useCount >= 2) {
+      document.getElementById('ctaCard').classList.add('visible');
+    }
+
+  } catch(e) {
+    document.getElementById('errMsg').textContent = 'Error: ' + e.message;
+  }
+
+  document.getElementById('loadingDots').classList.remove('visible');
+  document.getElementById('runBtn').disabled = false;
+}
+
+function submitGate() {
+  const email = document.getElementById('gateEmail').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email.');
+    return;
+  }
+  // TODO: wire to your email provider (Mailchimp, ConvertKit, etc.)
+  // Example: fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) })
+  console.log('New lead:', email);
+  gateSubmitted = true;
+  document.getElementById('gate').innerHTML = '<p style="color: var(--miner); font-size: 14px; padding: 8px 0;">✓ You\'re in! Keep going ↓</p>';
+  analyze(); // resume
+}
+
+function copyText(key, btnId) {
+  if (!window._result) return;
+  navigator.clipboard.writeText(window._result[key]);
+  const btn = document.getElementById(btnId);
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+}
+</script>
+</body>
+</html>
